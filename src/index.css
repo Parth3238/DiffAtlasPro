@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Code", Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  background: #18181b;
+  color: #f4f4f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button:not(:disabled), label[for] {
+  cursor: pointer;
+}
+
+/* Visible keyboard focus indicator, matched to the dark teal theme. */
+:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}
+
+/* Minimum ~44px tap targets on small screens; desktop density unchanged. */
+@media (max-width: 767px) {
+  button {
+    min-height: 44px;
+  }
+}
+
+::selection {
+  background: #115e59;
+  color: #f0fdfa;
+}
