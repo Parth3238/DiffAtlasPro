@@ -6,3 +6,5 @@ dist/
 .env.*
 !.env.example
 coverage/
+
+desktop.ini
