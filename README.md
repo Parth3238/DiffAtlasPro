@@ -55,3 +55,11 @@ Requires Node.js >= 20 (see the `engines` field in `package.json`).
 ## Architecture
 
 DiffAtlas uses a plugin-based diff engine: every file type implements a small shared `DiffPlugin` interface (`matches` for detection, `diff` for comparison) and registers itself in a central registry that maps file type → plugin, so adding a format means adding one file plus one registry line instead of touching UI code. The React layer stays type-agnostic — it renders the shared `DiffResult` shape (a tree view for JSON/YAML, a virtualized table for CSV, canvases for images) — while heavy text diffs run in a Web Worker behind a `useDiffWorker` hook, and YAML simply parses to an object and reuses the exact JSON structural diff rather than duplicating it.
+
+## Tech Stack
+
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-tested-6E9F18?logo=vitest&logoColor=white)
