@@ -63,3 +63,8 @@ DiffAtlas uses a plugin-based diff engine: every file type implements a small sh
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
 ![Vitest](https://img.shields.io/badge/Vitest-tested-6E9F18?logo=vitest&logoColor=white)
+
+## Requirements
+
+- Node.js 20 or higher
+- npm 10 or higher
