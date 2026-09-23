@@ -69,12 +69,3 @@ DiffAtlas uses a plugin-based diff engine: every file type implements a small sh
 - Node.js 20 or higher
 - npm 10 or higher
 
-## Requirements
-
-- Node.js 20 or higher
-- npm 10 or higher
-
-## Requirements
-
-- Node.js 20 or higher
-- npm 10 or higher
