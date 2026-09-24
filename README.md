@@ -69,3 +69,12 @@ DiffAtlas uses a plugin-based diff engine: every file type implements a small sh
 - Node.js 20 or higher
 - npm 10 or higher
 
+## Testing
+
+This project has two layers of automated testing, both run automatically 
+in CI on every push:
+- **Unit tests** (Vitest) — cover the diff engine algorithms (JSON, CSV, 
+  YAML, three-way merge). Run locally with `npm test`.
+- **End-to-end tests** (Playwright) — verify the full app flow in a real 
+  browser (loading files, running a diff, seeing results). Run locally 
+  with `npx playwright test`.
