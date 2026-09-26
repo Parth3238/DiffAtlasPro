@@ -1,13 +1,13 @@
 # DiffAtlas
-ðŸ”— **[Live Demo](https://diff-atlas-pro.vercel.app)**
+🔗 **[Live Demo](https://diff-atlas-pro.vercel.app)**
 
 ![CI](https://github.com/Parth3238/DiffAtlasPro/actions/workflows/test.yml/badge.svg)
 
-Structural and visual diffing for data files â€” JSON, YAML, CSV, and images â€” 100% client-side.
+Structural and visual diffing for data files — JSON, YAML, CSV, and images — 100% client-side.
 
 ## Problem Statement
 
-Config files, datasets, and screenshots change constantly, yet most diff tools only understand lines of text, and visual tools make you upload sensitive files to a server. DiffAtlas fills that gap with structural and perceptual diffing for data files that runs entirely in your browser â€” nothing is ever uploaded, so even private configs and screenshots stay on your machine.
+Config files, datasets, and screenshots change constantly, yet most diff tools only understand lines of text, and visual tools make you upload sensitive files to a server. DiffAtlas fills that gap with structural and perceptual diffing for data files that runs entirely in your browser — nothing is ever uploaded, so even private configs and screenshots stay on your machine.
 
 ## Features
 
@@ -26,15 +26,15 @@ Config files, datasets, and screenshots change constantly, yet most diff tools o
 - Vite + React 19 + TypeScript (strict)
 - Tailwind CSS v4 (compiled at build time, no CDN)
 - Vitest for unit tests, GitHub Actions for CI
-- papaparse â€” CSV parsing
-- js-yaml â€” YAML parsing
-- jsPDF (dynamically imported, code-split) â€” PDF reports
-- lz-string â€” shareable URL compression
-- @tanstack/react-virtual â€” virtualized CSV rows
+- papaparse — CSV parsing
+- js-yaml — YAML parsing
+- jsPDF (dynamically imported, code-split) — PDF reports
+- lz-string — shareable URL compression
+- @tanstack/react-virtual — virtualized CSV rows
 
 ## Screenshots
 
-> Placeholders â€” actual screenshots will be added here.
+> Placeholders — actual screenshots will be added here.
 
 ![Diff Mode](./docs/screenshot-diff.png)
 ![CSV table view](./docs/screenshot-csv.png)
@@ -54,7 +54,7 @@ Requires Node.js >= 20 (see the `engines` field in `package.json`).
 
 ## Architecture
 
-DiffAtlas uses a plugin-based diff engine: every file type implements a small shared `DiffPlugin` interface (`matches` for detection, `diff` for comparison) and registers itself in a central registry that maps file type â†’ plugin, so adding a format means adding one file plus one registry line instead of touching UI code. The React layer stays type-agnostic â€” it renders the shared `DiffResult` shape (a tree view for JSON/YAML, a virtualized table for CSV, canvases for images) â€” while heavy text diffs run in a Web Worker behind a `useDiffWorker` hook, and YAML simply parses to an object and reuses the exact JSON structural diff rather than duplicating it.
+DiffAtlas uses a plugin-based diff engine: every file type implements a small shared `DiffPlugin` interface (`matches` for detection, `diff` for comparison) and registers itself in a central registry that maps file type → plugin, so adding a format means adding one file plus one registry line instead of touching UI code. The React layer stays type-agnostic — it renders the shared `DiffResult` shape (a tree view for JSON/YAML, a virtualized table for CSV, canvases for images) — while heavy text diffs run in a Web Worker behind a `useDiffWorker` hook, and YAML simply parses to an object and reuses the exact JSON structural diff rather than duplicating it.
 
 ## Tech Stack
 
@@ -73,7 +73,7 @@ DiffAtlas uses a plugin-based diff engine: every file type implements a small sh
 
 This project has two layers of automated testing, both run automatically 
 in CI on every push:
-- **Unit tests** (Vitest) â€” cover the diff engine algorithms (JSON, CSV, 
+- **Unit tests** (Vitest) — cover the diff engine algorithms (JSON, CSV, 
   YAML, three-way merge). Run locally with `npm test`.
-- **End-to-end tests** (Playwright) — verify the full app flow in a real browser: app load, JSON diff, CSV diff, clean three-way merge, and merge conflict detection. Run locally with `npx playwright test`.
+- **End-to-end tests** (Playwright) � verify the full app flow in a real browser: app load, JSON diff, CSV diff, clean three-way merge, and merge conflict detection. Run locally with `npx playwright test`.
 
