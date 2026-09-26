@@ -1,4 +1,4 @@
-﻿import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test('CSV diff detects added, removed, and modified rows', async ({ page }) => {
   await page.goto('/');
@@ -13,5 +13,5 @@ test('CSV diff detects added, removed, and modified rows', async ({ page }) => {
   await page.getByRole('button', { name: 'Load original file for comparison' }).click();
   await page.getByRole('button', { name: 'Load modified file for comparison' }).click();
 
-  await expect(page.getByText(/1 added, 1 removed, 2 modified/i)).toBeVisible({ timeout: 10000 });
+  await expect(page.getByText(/1 added, 1 removed, 2 modified/i).first()).toBeVisible({ timeout: 10000 });
 });
