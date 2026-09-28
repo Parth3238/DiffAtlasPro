@@ -1,5 +1,5 @@
 # DiffAtlas
-🔗 **[Live Demo](https://diff-atlas-pro.vercel.app)**
+**[Live Demo](https://diff-atlas-pro.vercel.app)**
 
 ![CI](https://github.com/Parth3238/DiffAtlasPro/actions/workflows/test.yml/badge.svg)
 
@@ -75,5 +75,26 @@ This project has two layers of automated testing, both run automatically
 in CI on every push:
 - **Unit tests** (Vitest) — cover the diff engine algorithms (JSON, CSV, 
   YAML, three-way merge). Run locally with `npm test`.
-- **End-to-end tests** (Playwright) � verify the full app flow in a real browser: app load, JSON diff, CSV diff, clean three-way merge, and merge conflict detection. Run locally with `npx playwright test`.
+- **End-to-end tests** (Playwright) — verify the full app flow in a real browser: app load, JSON diff, CSV diff, clean three-way merge, and merge conflict detection. Run locally with `npx playwright test`.
 
+
+## Architecture
+
+```mermaid
+flowchart LR
+    UI["React UI<br/>(file input, tabs)"] --> Hook["useDiffWorker hook"]
+    Hook --> Worker["Web Worker<br/>(diffWorker)"]
+    Worker --> Registry["Plugin registry"]
+    Registry --> JSON["JSON plugin"]
+    Registry --> CSV["CSV plugin"]
+    Registry --> YAML["YAML plugin<br/>(reuses JSON diff)"]
+    Registry --> IMG["Image plugin"]
+    JSON --> LCS["LCS algorithm"]
+    CSV --> LCS
+    UI --> Merge["Three-way merge"]
+    UI --> Export["Export<br/>(JSON Patch, PDF)"]
+    UI --> Share["Shareable link<br/>(lz-string in URL hash)"]
+    UI --> History["History<br/>(IndexedDB)"]
+```
+
+Diffs run in a Web Worker so large files never freeze the UI. Each file type is a plugin behind one common interface, so adding a new format means adding one plugin and registering it. Everything runs in the browser, with no backend and no API keys.
