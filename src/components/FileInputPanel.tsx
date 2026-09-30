@@ -156,6 +156,12 @@ export default function FileInputPanel({
       <textarea
         value={content}
         onChange={(e) => handlePaste(e.target.value)}
+        onKeyDown={(e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && content.trim()) {
+            e.preventDefault()
+            handleLoad()
+          }
+        }}
         placeholder="…or paste content directly"
         spellCheck={false}
         aria-label={`${label} content — paste file content here`}
