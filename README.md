@@ -75,7 +75,7 @@ This project has two layers of automated testing, both run automatically
 in CI on every push:
 - **Unit tests** (Vitest) — cover the diff engine algorithms (JSON, CSV, 
   YAML, three-way merge). Run locally with `npm test`.
-- **End-to-end tests** (Playwright) — verify the full app flow in a real browser: app load, JSON diff, CSV diff, clean three-way merge, and merge conflict detection. Run locally with `npx playwright test`.
+- **End-to-end tests** (Playwright) — verify the full app flow in a real browser: app load, JSON/CSV/YAML/image diff, three-way merge (clean and with conflicts, auto and manual resolution), JSON Patch and PDF export, shareable links, and diff history. Run locally with `npx playwright test`.
 
 
 ## Architecture
