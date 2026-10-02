@@ -98,3 +98,14 @@ flowchart LR
 ```
 
 Diffs run in a Web Worker so large files never freeze the UI. Each file type is a plugin behind one common interface, so adding a new format means adding one plugin and registering it. Everything runs in the browser, with no backend and no API keys.
+## Known Limitations
+
+- Image diff works best on same-dimension images; very large images may be slow to compare.
+- CSV row matching falls back to fuzzy matching when no unique key column is found, which can misalign rows on highly similar data.
+- Shareable links are size-limited (content is compressed into the URL) - very large files should use Export instead.
+
+## Performance
+
+Diff computation runs in a Web Worker, so the UI stays responsive even on 
+large files. Manually verified smooth on a 5,000-row CSV diff with no 
+UI freezing.
