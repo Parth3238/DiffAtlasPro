@@ -109,3 +109,11 @@ Diffs run in a Web Worker so large files never freeze the UI. Each file type is 
 Diff computation runs in a Web Worker, so the UI stays responsive even on 
 large files. Manually verified smooth on a 5,000-row CSV diff with no 
 UI freezing.
+## Run with Docker
+
+```bash
+docker pull parthagrawal3238/diffatlas:latest
+docker run -p 8080:80 parthagrawal3238/diffatlas:latest
+```
+
+Then open http://localhost:8080
